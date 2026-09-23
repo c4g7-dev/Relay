@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" role="img" aria-labelledby="title description">
+  <title id="title">Relay</title>
+  <desc id="description">A filled blue speech bubble with four equal rounded corners, a neatly attached stepped pixel tail, and two opposing white pixel arrows. The near-black square badge also has four identical rounded corners.</desc>
+
+  <rect id="badge" width="1024" height="1024" rx="192" fill="#101014"/>
+
+  <g id="relay-mark">
+    <g id="chat-emblem" fill="#5A8CFF">
+      <rect id="bubble-body" x="128" y="160" width="768" height="672" rx="144"/>
+      <path id="chat-tail" d="M288 800H416V832H384V864H352V896H320V928H256V896H288V864H320V832H288Z"/>
+    </g>
+
+    <g id="relay-arrows" fill="#FFFFFF">
+      <path id="arrow-right" d="M640 256H704V288H736V320H768V352H800V416H768V448H736V480H704V512H640V448H672V416H224V352H672V320H640Z"/>
+      <path id="arrow-left" transform="rotate(180 512 512)" d="M640 256H704V288H736V320H768V352H800V416H768V448H736V480H704V512H640V448H672V416H224V352H672V320H640Z"/>
+    </g>
+  </g>
+</svg>
