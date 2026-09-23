@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/main/resources/assets/relaychat/icon.png" width="96" alt="Relay icon">
+  <img src="docs/logo.png" width="128" alt="Relay logo">
 </p>
 
 <h1 align="center">Relay</h1>
