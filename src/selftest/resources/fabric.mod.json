@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "relay-selftest",
+  "version": "0.0.0",
+  "name": "Relay self-test (dev only)",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.c4g7.relay.selftest.SelfTest"
+    ]
+  },
+  "depends": {
+    "relaychat": "*"
+  },
+  "mixins": [
+    "relay-selftest.mixins.json"
+  ]
+}

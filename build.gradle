@@ -1,0 +1,89 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+version = "${project.mod_version}+${project.minecraft_version}"
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+sourceSets {
+	// A dev-only mod that drives Relay through real chat-screen input and takes screenshots.
+	// It is never part of the release jar; run it with ./gradlew runSelftest.
+	selftest {
+		compileClasspath += main.compileClasspath + main.output
+		runtimeClasspath += main.runtimeClasspath + main.output
+	}
+}
+
+loom {
+	mods {
+		relaychat {
+			sourceSet sourceSets.main
+		}
+		"relay-selftest" {
+			sourceSet sourceSets.selftest
+		}
+	}
+
+	runs {
+		selftest {
+			client()
+			name "Relay self-test"
+			source sourceSets.selftest
+			runDir "run-selftest"
+			programArgs "--quickPlaySingleplayer", "RelayTest", "--width", "1920", "--height", "1080"
+			vmArgs "-Xmx2G"
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	testImplementation platform("org.junit:junit-bom:5.13.4")
+	testImplementation "org.junit.jupiter:junit-jupiter"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(25)
+	}
+	withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+	it.options.encoding = "UTF-8"
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archives_base_name}" }
+	}
+	manifest {
+		attributes(
+			"Implementation-Title": "Relay",
+			"Implementation-Version": project.version,
+			"Implementation-Vendor": "c4g7"
+		)
+	}
+}

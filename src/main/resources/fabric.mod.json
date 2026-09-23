@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "relaychat",
+  "version": "${version}",
+  "name": "Relay",
+  "description": "Windowed chat for Minecraft: movable, resizable and lockable chat windows with tabs, word and regex filters (with a live regex editor), timestamps, copy-on-right-click, and chat that survives server switches. Client-side.",
+  "authors": [
+    {
+      "name": "c4g7",
+      "contact": {
+        "homepage": "https://github.com/c4g7-dev"
+      }
+    }
+  ],
+  "contact": {
+    "homepage": "https://github.com/c4g7-dev/Relay",
+    "sources": "https://github.com/c4g7-dev/Relay",
+    "issues": "https://github.com/c4g7-dev/Relay/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/relaychat/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.c4g7.relay.Relay"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "relaychat.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "fabric-api": "*",
+    "minecraft": "26.2",
+    "java": ">=25"
+  },
+  "breaks": {
+    "velvetchat": "*"
+  }
+}
